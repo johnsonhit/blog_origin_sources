@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>iOS 逆向工程资料整理 | N.Y.</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="iOS,Jail Break," />
+  
+
+  <meta name="description" content="前言有盆友问我要 iOS 越狱插件的开发学习资料，今天就趁机稍作整理，精选了自己学习过程中某些逆向工程的资料，顺便简要回顾一下 iOS 逆向工程的相关技术。_本文只是学习资料整理，不探讨技术细节。_
+概览工具清单做 iOS 逆向开发，要有的基本意识是，首先要有一台越狱设备，其次，要至少了解以下工具。
+
+
+
+工具名称
+作用
+
+
+
+
+Cydia
+越狱机上的安装软件包的软件管理器
+
+
+OpenSSH
+连">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 逆向工程资料整理">
+<meta property="og:url" content="http://yoursite.com/2017/05/09/Learning-Reverse-From-Today-D4/index.html">
+<meta property="og:site_name" content="N.Y.">
+<meta property="og:description" content="前言有盆友问我要 iOS 越狱插件的开发学习资料，今天就趁机稍作整理，精选了自己学习过程中某些逆向工程的资料，顺便简要回顾一下 iOS 逆向工程的相关技术。_本文只是学习资料整理，不探讨技术细节。_
+概览工具清单做 iOS 逆向开发，要有的基本意识是，首先要有一台越狱设备，其次，要至少了解以下工具。
+
+
+
+工具名称
+作用
+
+
+
+
+Cydia
+越狱机上的安装软件包的软件管理器
+
+
+OpenSSH
+连">
+<meta property="og:updated_time" content="2017-05-08T18:14:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 逆向工程资料整理">
+<meta name="twitter:description" content="前言有盆友问我要 iOS 越狱插件的开发学习资料，今天就趁机稍作整理，精选了自己学习过程中某些逆向工程的资料，顺便简要回顾一下 iOS 逆向工程的相关技术。_本文只是学习资料整理，不探讨技术细节。_
+概览工具清单做 iOS 逆向开发，要有的基本意识是，首先要有一台越狱设备，其次，要至少了解以下工具。
+
+
+
+工具名称
+作用
+
+
+
+
+Cydia
+越狱机上的安装软件包的软件管理器
+
+
+OpenSSH
+连">
+
+  
+
+  
+    <link rel="icon" href="https://niyaoyao.github.io/images/avatar_ny.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#概览"><span class="toc-text">概览</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具清单"><span class="toc-text">工具清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理论清单"><span class="toc-text">理论清单</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工具资源"><span class="toc-text">工具资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他力荐资源"><span class="toc-text">其他力荐资源</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Learning-Reverse-From-Today-D4" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">iOS 逆向工程资料整理</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Niyao</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/iOS-Reverse-Engineering/">iOS Reverse Engineering</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.niyao.space/2017/05/09/Learning-Reverse-From-Today-D4/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有盆友问我要 iOS 越狱插件的开发学习资料，今天就趁机稍作整理，精选了自己学习过程中某些逆向工程的资料，顺便简要回顾一下 iOS 逆向工程的相关技术。_本文只是学习资料整理，不探讨技术细节。_</p>
+<h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><h2 id="工具清单"><a href="#工具清单" class="headerlink" title="工具清单"></a>工具清单</h2><p>做 iOS 逆向开发，要有的基本意识是，首先要有一台越狱设备，其次，要至少了解以下工具。</p>
+<table>
+<thead>
+<tr>
+<th>工具名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cydia</td>
+<td>越狱机上的安装软件包的软件管理器</td>
+</tr>
+<tr>
+<td>OpenSSH</td>
+<td>连接越狱设备</td>
+</tr>
+<tr>
+<td>usbmuxd</td>
+<td>连接越狱设备</td>
+</tr>
+<tr>
+<td>scp</td>
+<td>传文件</td>
+</tr>
+<tr>
+<td>Cycript</td>
+<td>动态分析工具</td>
+</tr>
+<tr>
+<td>IDA</td>
+<td>静态分析工具</td>
+</tr>
+<tr>
+<td>Hopper</td>
+<td>静态分析工具</td>
+</tr>
+<tr>
+<td>class-dump</td>
+<td>静态分析工具</td>
+</tr>
+<tr>
+<td>Theos</td>
+<td>Tweak 工具</td>
+</tr>
+<tr>
+<td>iOSOpenDev</td>
+<td>Tweak 工具（推荐 Theos，安装麻烦，而且会因为 Theos 版本问题导致 Tweak 报错，喜欢探究的可以用一下。）</td>
+</tr>
+<tr>
+<td>dpkg</td>
+<td>安装传送到越狱设备上的 Debian Package</td>
+</tr>
+<tr>
+<td>PP 助手（Mac／PC）客户端</td>
+<td>下载已经砸壳的应用，传文件等</td>
+</tr>
+</tbody>
+</table>
+<h2 id="理论清单"><a href="#理论清单" class="headerlink" title="理论清单"></a>理论清单</h2><table>
+<thead>
+<tr>
+<th>理论</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二进制分析方法</td>
+<td>静态分析、动态分析查找目标函数，Hook 相关方法。</td>
+</tr>
+<tr>
+<td>苹果签名（重签名）机制</td>
+<td>免越狱插件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="工具资源"><a href="#工具资源" class="headerlink" title="工具资源"></a>工具资源</h1><table>
+<thead>
+<tr>
+<th>Cydia</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>介绍</td>
+<td><a href="https://zh.wikipedia.org/wiki/Cydia" target="_blank" rel="external">https://zh.wikipedia.org/wiki/Cydia</a></td>
+</tr>
+<tr>
+<td>网址</td>
+<td><a href="https://cydia.saurik.com/" target="_blank" rel="external">https://cydia.saurik.com/</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>OpenSSH</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安装</td>
+<td><a href="https://cydia.saurik.com/openssh.html" target="_blank" rel="external">https://cydia.saurik.com/openssh.html</a></td>
+</tr>
+<tr>
+<td>使用</td>
+<td><a href="http://ged.msu.edu/angus/tutorials/using-ssh-scp-terminal-macosx.html" target="_blank" rel="external">http://ged.msu.edu/angus/tutorials/using-ssh-scp-terminal-macosx.html</a></td>
+</tr>
+<tr>
+<td>usbmuxd</td>
+<td><a href="http://bbs.iosre.com/t/usb-ssh-ios/193" target="_blank" rel="external">http://bbs.iosre.com/t/usb-ssh-ios/193</a></td>
+</tr>
+<tr>
+<td>scp</td>
+<td><a href="http://ged.msu.edu/angus/tutorials/using-ssh-scp-terminal-macosx.html" target="_blank" rel="external">http://ged.msu.edu/angus/tutorials/using-ssh-scp-terminal-macosx.html</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Cycript</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>官网</td>
+<td><a href="http://www.cycript.org/" target="_blank" rel="external">http://www.cycript.org/</a></td>
+</tr>
+<tr>
+<td>手册</td>
+<td><a href="http://www.cycript.org/manual/" target="_blank" rel="external">http://www.cycript.org/manual/</a></td>
+</tr>
+<tr>
+<td>Cycript Tricks Wiki</td>
+<td><a href="http://iphonedevwiki.net/index.php/Cycript_Tricks" target="_blank" rel="external">http://iphonedevwiki.net/index.php/Cycript_Tricks</a></td>
+</tr>
+<tr>
+<td>使用</td>
+<td><a href="http://www.jianshu.com/p/7c41b03c9eb3" target="_blank" rel="external">http://www.jianshu.com/p/7c41b03c9eb3</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>IDA</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下载 demo</td>
+<td><a href="https://www.hex-rays.com/products/ida/support/download_demo.shtml" target="_blank" rel="external">https://www.hex-rays.com/products/ida/support/download_demo.shtml</a></td>
+</tr>
+<tr>
+<td>About</td>
+<td><a href="https://www.hex-rays.com/products/ida/index.shtml" target="_blank" rel="external">https://www.hex-rays.com/products/ida/index.shtml</a></td>
+</tr>
+<tr>
+<td>使用</td>
+<td><a href="http://blog.csdn.net/column/details/ios-ida.html" target="_blank" rel="external">http://blog.csdn.net/column/details/ios-ida.html</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Hopper</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下载 demo</td>
+<td><a href="https://www.hopperapp.com/" target="_blank" rel="external">https://www.hopperapp.com/</a></td>
+</tr>
+<tr>
+<td>iOS逆向工程之Hopper中的ARM指令</td>
+<td><a href="http://www.cnblogs.com/ludashi/p/5740696.html" target="_blank" rel="external">http://www.cnblogs.com/ludashi/p/5740696.html</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Theos</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Theos/Setup</td>
+<td><a href="http://iphonedevwiki.net/index.php/Theos/Setup#For_Mac_OS_X" target="_blank" rel="external">http://iphonedevwiki.net/index.php/Theos/Setup#For_Mac_OS_X</a></td>
+</tr>
+<tr>
+<td>Logos</td>
+<td><a href="http://iphonedevwiki.net/index.php/Logos" target="_blank" rel="external">http://iphonedevwiki.net/index.php/Logos</a></td>
+</tr>
+<tr>
+<td>Tutorial: Install the latest Theos step by step</td>
+<td><a href="http://bbs.iosre.com/t/tutorial-install-the-latest-theos-step-by-step/2753" target="_blank" rel="external">http://bbs.iosre.com/t/tutorial-install-the-latest-theos-step-by-step/2753</a></td>
+</tr>
+<tr>
+<td>Theos：iOS越狱程序开发框架</td>
+<td><a href="http://security.ios-wiki.com/issue-3-6/" target="_blank" rel="external">http://security.ios-wiki.com/issue-3-6/</a></td>
+</tr>
+<tr>
+<td>iOS逆向工程之Theos</td>
+<td><a href="http://www.cnblogs.com/ludashi/p/5714095.html" target="_blank" rel="external">http://www.cnblogs.com/ludashi/p/5714095.html</a></td>
+</tr>
+<tr>
+<td>iOS逆向入门实践 — 逆向微信，伪装定位(一)</td>
+<td><a href="http://pandara.xyz/2016/08/13/fake_wechat_location/" target="_blank" rel="external">http://pandara.xyz/2016/08/13/fake_wechat_location/</a></td>
+</tr>
+<tr>
+<td>iOS逆向入门实践 — 逆向微信，伪装定位(二)</td>
+<td><a href="http://pandara.xyz/2016/08/14/fake_wechat_location2/" target="_blank" rel="external">http://pandara.xyz/2016/08/14/fake_wechat_location2/</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>iOSOpenDev</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOSOpenDev</td>
+<td><a href="http://www.iosopendev.com/" target="_blank" rel="external">http://www.iosopendev.com/</a></td>
+</tr>
+<tr>
+<td>iOSOpenDev &amp; 应用重签名 &amp; iOSAppHook 等</td>
+<td><a href="https://github.com/Urinx/iOSAppHook" target="_blank" rel="external">https://github.com/Urinx/iOSAppHook</a></td>
+</tr>
+<tr>
+<td>iOS App 签名的原理</td>
+<td><a href="http://blog.cnbang.net/tech/3386/" target="_blank" rel="external">http://blog.cnbang.net/tech/3386/</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>优秀教程</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOS安全些许经验和学习笔记</td>
+<td><a href="http://bbs.pediy.com/showthread.php?t=209014" target="_blank" rel="external">http://bbs.pediy.com/showthread.php?t=209014</a></td>
+</tr>
+<tr>
+<td>移动App入侵与逆向破解技术－iOS篇</td>
+<td><a href="https://dev.qq.com/topic/577e0acc896e9ebb6865f321" target="_blank" rel="external">https://dev.qq.com/topic/577e0acc896e9ebb6865f321</a></td>
+</tr>
+<tr>
+<td>如何让 Mac 版微信客户端防撤回</td>
+<td><a href="http://www.jianshu.com/p/fdb8b42f7614" target="_blank" rel="external">http://www.jianshu.com/p/fdb8b42f7614</a></td>
+</tr>
+<tr>
+<td>小试牛刀：iOS去广告入门实战</td>
+<td><a href="http://www.freebuf.com/articles/terminal/77386.html" target="_blank" rel="external">http://www.freebuf.com/articles/terminal/77386.html</a></td>
+</tr>
+<tr>
+<td>一步一步实现iOS微信自动抢红包(非越狱)</td>
+<td><a href="http://www.jianshu.com/p/189afbe3b429" target="_blank" rel="external">http://www.jianshu.com/p/189afbe3b429</a></td>
+</tr>
+<tr>
+<td>APP逆向分析之钉钉抢红包插件的实现-iOS篇</td>
+<td><a href="https://yohunl.com/ding-ding-qiang-hong-bao-cha-jian-iospian/" target="_blank" rel="external">https://yohunl.com/ding-ding-qiang-hong-bao-cha-jian-iospian/</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="其他力荐资源"><a href="#其他力荐资源" class="headerlink" title="其他力荐资源"></a>其他力荐资源</h1><table>
+<thead>
+<tr>
+<th>Blog</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>蒸米的文章</td>
+<td><a href="https://github.com/zhengmin1989/MyArticles" target="_blank" rel="external">https://github.com/zhengmin1989/MyArticles</a></td>
+</tr>
+<tr>
+<td>念茜（极客学院 Wiki ）</td>
+<td><a href="http://wiki.jikexueyuan.com/project/ios-security-defense/" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/ios-security-defense/</a></td>
+</tr>
+<tr>
+<td>杨君的小黑屋</td>
+<td><a href="http://blog.imjun.net/" target="_blank" rel="external">http://blog.imjun.net/</a></td>
+</tr>
+<tr>
+<td>Alone_Monkey</td>
+<td><a href="http://www.blogfshare.com/" target="_blank" rel="external">http://www.blogfshare.com/</a></td>
+</tr>
+<tr>
+<td>碳基体</td>
+<td><a href="http://danqingdani.blog.163.com/" target="_blank" rel="external">http://danqingdani.blog.163.com/</a></td>
+</tr>
+<tr>
+<td>iPhoneDevWiki</td>
+<td><a href="http://iphonedevwiki.net/index.php/Main_Page" target="_blank" rel="external">http://iphonedevwiki.net/index.php/Main_Page</a></td>
+</tr>
+<tr>
+<td>iOS Security</td>
+<td><a href="http://security.ios-wiki.com/" target="_blank" rel="external">http://security.ios-wiki.com/</a></td>
+</tr>
+</tbody>
+</table>
+
+    
+  </div>
+  
+  <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+  
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">赞赏</span>
+      <div class="donation-body">
+        <div class="tip text-center">感谢支持～ 😘</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/05/06/fly-away-day1.1/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/05/10/what-the-thread-it-is/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'N.Y.';
+    
+    var disqus_url = 'http://yoursite.com/2017/05/09/Learning-Reverse-From-Today-D4/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//N.Y..disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

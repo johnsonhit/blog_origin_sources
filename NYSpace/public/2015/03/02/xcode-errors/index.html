@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Xcode 开发的出错整理 | N.Y.</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Xcode," />
+  
+
+  <meta name="description" content="错误整理这篇文章会整理开发过程中，我认为非常奇葩蹊跷的错误。会不定期更新。
+Undefined symbols
+在链接过程中找不到符号表
+
+12345Undefined symbols for architecture i386:  &amp;quot;_OBJC_CLASS_$_ShareService&amp;quot;, referenced from:      objc-class-ref in App">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode 开发的出错整理">
+<meta property="og:url" content="http://yoursite.com/2015/03/02/xcode-errors/index.html">
+<meta property="og:site_name" content="N.Y.">
+<meta property="og:description" content="错误整理这篇文章会整理开发过程中，我认为非常奇葩蹊跷的错误。会不定期更新。
+Undefined symbols
+在链接过程中找不到符号表
+
+12345Undefined symbols for architecture i386:  &amp;quot;_OBJC_CLASS_$_ShareService&amp;quot;, referenced from:      objc-class-ref in App">
+<meta property="og:updated_time" content="2017-09-27T09:33:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xcode 开发的出错整理">
+<meta name="twitter:description" content="错误整理这篇文章会整理开发过程中，我认为非常奇葩蹊跷的错误。会不定期更新。
+Undefined symbols
+在链接过程中找不到符号表
+
+12345Undefined symbols for architecture i386:  &amp;quot;_OBJC_CLASS_$_ShareService&amp;quot;, referenced from:      objc-class-ref in App">
+
+  
+
+  
+    <link rel="icon" href="https://niyaoyao.github.io/images/avatar_ny.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#错误整理"><span class="toc-text">错误整理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Undefined-symbols"><span class="toc-text">Undefined symbols</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-xcode-errors" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Xcode 开发的出错整理</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.03.02</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Niyao</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/iOS-development/">iOS development</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.niyao.space/2015/03/02/xcode-errors/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="错误整理"><a href="#错误整理" class="headerlink" title="错误整理"></a>错误整理</h2><p>这篇文章会整理开发过程中，我认为非常奇葩蹊跷的错误。会不定期更新。</p>
+<h3 id="Undefined-symbols"><a href="#Undefined-symbols" class="headerlink" title="Undefined symbols"></a>Undefined symbols</h3><ul>
+<li>在链接过程中找不到符号表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Undefined symbols for architecture i386:</div><div class="line">  &quot;_OBJC_CLASS_$_ShareService&quot;, referenced from:</div><div class="line">      objc-class-ref in AppDelegate.o</div><div class="line">ld: symbol(s) not found for architecture i386</div><div class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</div></pre></td></tr></table></figure>
+<p>解决办法 </p>
+<ul>
+<li><p>TargetSettings -&gt; Build Phases -&gt; Compile Sources -&gt; add your .m class -&gt;Build and Run</p>
+</li>
+<li><p>WeChat</p>
+</li>
+</ul>
+<p>链接过程找不到符号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Undefined symbols for architecture i386:</div><div class="line">  &quot;_OBJC_CLASS_$_SendMessageToWXReq&quot;, referenced from:</div><div class="line">      objc-class-ref in ShareService-975EADE79707A8E.o</div><div class="line">  &quot;_OBJC_CLASS_$_SendMessageToWXResp&quot;, referenced from:</div><div class="line">      objc-class-ref in ShareService-975EADE79707A8E.o</div><div class="line">  &quot;_OBJC_CLASS_$_WXApi&quot;, referenced from:</div><div class="line">      objc-class-ref in ShareService-975EADE79707A8E.o</div><div class="line">  &quot;_OBJC_CLASS_$_WXMediaMessage&quot;, referenced from:</div><div class="line">      objc-class-ref in ShareObject-7F9E83398E91668B.o</div><div class="line">  &quot;_OBJC_CLASS_$_WXWebpageObject&quot;, referenced from:</div><div class="line">      objc-class-ref in ShareObject-7F9E83398E91668B.o</div><div class="line">ld: symbol(s) not found for architecture i386</div><div class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</div></pre></td></tr></table></figure>
+<p>解决办法</p>
+<ol>
+<li>Build Settings -&gt; Other Linker Flags 添加需要的 flag</li>
+<li>Build Settings -&gt; Library Search Paths 中添加 libWeChatSDK.a ，WXApi.h，WXApiObject.h，文件所在位置</li>
+<li>Build Phases -&gt; Linked Frameworks and Libraries 添加 framework 和 libWeChatSDK.a 库</li>
+</ol>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p><strong>Undefined symbols</strong> 问题一般就是缺少了编译的文件、库等，而导致项目在链接过程中找不到对应的符号。</p>
+
+    
+  </div>
+  
+  <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+  
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">赞赏</span>
+      <div class="donation-body">
+        <div class="tip text-center">感谢支持～ 😘</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="hide pull-left" href="/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/07/29/Objective-C-Runtime-From-Build-To-Did-Launch/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'N.Y.';
+    
+    var disqus_url = 'http://yoursite.com/2015/03/02/xcode-errors/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//N.Y..disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>今天开始学 React：建立一个简单页面 | N.Y.</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Web,React," />
+  
+
+  <meta name="description" content="前言由于公司的项目需要 React Native 的相关技术，之前已经开发过 React 创建 Native 的项目。但是，很久没做 Web 的项目了，觉得这是个机会，开始重拾前端，学习现代前端技术。我是在 Mac OS X 环境进行学习的，Terminal + sublime + atom 是我学习使用的工具。
+着手创建第一个 Web 页面安装安装 React 需要借助 npm 。在安装 nod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="今天开始学 React：建立一个简单页面">
+<meta property="og:url" content="http://yoursite.com/2016/09/29/Learning-React-From-Today-D1/index.html">
+<meta property="og:site_name" content="N.Y.">
+<meta property="og:description" content="前言由于公司的项目需要 React Native 的相关技术，之前已经开发过 React 创建 Native 的项目。但是，很久没做 Web 的项目了，觉得这是个机会，开始重拾前端，学习现代前端技术。我是在 Mac OS X 环境进行学习的，Terminal + sublime + atom 是我学习使用的工具。
+着手创建第一个 Web 页面安装安装 React 需要借助 npm 。在安装 nod">
+<meta property="og:updated_time" content="2017-01-10T10:08:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="今天开始学 React：建立一个简单页面">
+<meta name="twitter:description" content="前言由于公司的项目需要 React Native 的相关技术，之前已经开发过 React 创建 Native 的项目。但是，很久没做 Web 的项目了，觉得这是个机会，开始重拾前端，学习现代前端技术。我是在 Mac OS X 环境进行学习的，Terminal + sublime + atom 是我学习使用的工具。
+着手创建第一个 Web 页面安装安装 React 需要借助 npm 。在安装 nod">
+
+  
+
+  
+    <link rel="icon" href="https://niyaoyao.github.io/images/avatar_ny.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#着手创建第一个-Web-页面"><span class="toc-text">着手创建第一个 Web 页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello-World"><span class="toc-text">Hello World</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#项目目录结构"><span class="toc-text">项目目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#源码结构"><span class="toc-text">源码结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整合进已有的应用"><span class="toc-text">整合进已有的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-React-DOM"><span class="toc-text">安装 React DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-CDN"><span class="toc-text">通过 CDN</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Learning-React-From-Today-D1" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">今天开始学 React：建立一个简单页面</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.29</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Niyao</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Web-Front-End/">Web Front End</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.niyao.space/2016/09/29/Learning-React-From-Today-D1/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于公司的项目需要 React Native 的相关技术，之前已经开发过 React 创建 Native 的项目。但是，很久没做 Web 的项目了，觉得这是个机会，开始重拾前端，学习现代前端技术。<br>我是在 Mac OS X 环境进行学习的，Terminal + sublime + atom 是我学习使用的工具。</p>
+<h2 id="着手创建第一个-Web-页面"><a href="#着手创建第一个-Web-页面" class="headerlink" title="着手创建第一个 Web 页面"></a>着手创建第一个 Web 页面</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装 React 需要借助 npm 。在安装 node 之前推荐先安装 Homebrew</p>
+<ul>
+<li>Homebrew</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>node</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<ul>
+<li>create-react-app</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g create-react-app</div></pre></td></tr></table></figure>
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>利用 <strong>create-react-app</strong> 是最佳的方式创建一个新的 React 单应用。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">reate-react-app hello-world</div><div class="line"><span class="built_in">cd</span> hello-world</div><div class="line">npm start</div></pre></td></tr></table></figure>
+<p>执行以上命令之后就会开启本地服务，并打开 <a href="http://localhost:3000/。" target="_blank" rel="external">http://localhost:3000/。</a></p>
+<h4 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h4><p>在 Terminal 中查看当前目录的文件结构：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">➜  hello-world ls</div><div class="line">README.md    node_modules package.json public       src</div></pre></td></tr></table></figure></p>
+<ul>
+<li>README.md 说明文件</li>
+<li>node_modules node 依赖包</li>
+<li>package.json 依赖包的配置信息</li>
+<li>public 网页</li>
+<li>src 资源 </li>
+</ul>
+<p>可以分别对该目录下的文件夹进行 ls 操作查看文件详情。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">➜  hello-world ls public </div><div class="line">favicon.ico index.html</div><div class="line">➜  hello-world ls src </div><div class="line">App.css     App.js      App.test.js index.css   index.js    logo.svg</div></pre></td></tr></table></figure></p>
+<h4 id="源码结构"><a href="#源码结构" class="headerlink" title="源码结构"></a>源码结构</h4><ul>
+<li>App.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> logo <span class="keyword">from</span> <span class="string">'./logo.svg'</span>;</div><div class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div className="App"&gt;</div><div class="line">        &lt;div className="App-header"&gt;</div><div class="line">          &lt;img src=&#123;logo&#125; className="App-logo" alt="logo" /&gt;</div><div class="line">          &lt;h2&gt;Welcome to React&lt;/h2&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;p className="App-intro"&gt;</div><div class="line">          To get started, edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.</div><div class="line">        &lt;/p&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default App;</div></pre></td></tr></table></figure>
+<ul>
+<li>index.html</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">href</span>=<span class="string">"%PUBLIC_URL%/favicon.ico"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--</span></div><div class="line">      Notice the use of %PUBLIC_URL% in the tag above.</div><div class="line">      It will be replaced with the URL of the `public` folder during the build.</div><div class="line">      Only files inside the `public` folder can be referenced from the HTML.</div><div class="line"></div><div class="line">      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will</div><div class="line">      work correctly both with client-side routing and a non-root public URL.</div><div class="line">      Learn how to configure a non-root public URL by running `npm run build`.</div><div class="line">    --&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>React App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--</span></div><div class="line">      This HTML file is a template.</div><div class="line">      If you open it directly in the browser, you will see an empty page.</div><div class="line"></div><div class="line">      You can add webfonts, meta tags, or analytics to this file.</div><div class="line">      The build step will place the bundled scripts into the &lt;body&gt; tag.</div><div class="line"></div><div class="line">      To begin the development, run `npm start`.</div><div class="line">      To create a production bundle, use `npm run build`.</div><div class="line">    --&gt;</div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>通过观察 App.js 和 index.html 文件可以得知，App 中利用 JSX 渲染的元素的父节点是 id 为 root 的 div 元素。</p>
+<p>因此，要是想在 Root 里面添加子元素就需要在 App.js 中利用 JSX 编码。</p>
+<h3 id="整合进已有的应用"><a href="#整合进已有的应用" class="headerlink" title="整合进已有的应用"></a>整合进已有的应用</h3><h4 id="安装-React-DOM"><a href="#安装-React-DOM" class="headerlink" title="安装 React DOM"></a>安装 React DOM</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save react react-dom</div></pre></td></tr></table></figure>
+<h4 id="通过-CDN"><a href="#通过-CDN" class="headerlink" title="通过 CDN"></a>通过 CDN</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"https://unpkg.com/react@15/dist/react.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script src=<span class="string">"https://unpkg.com/react-dom@15/dist/react-dom.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li><p>学习技术的套路<br>我认为，React 的入门姿势还是很 easy 的，嗯，能创建 hello world 项目就算入门了。<br>这次的学习认识了 React 单应用的项目结构。刚开始学习应用层的开发，就是学习框架的使用。Web 开发如此，Native 的套路也是如此。但是，对于 React 的学习不能只停留在框架的使用层面，后面肯定需要学习 JavaScript ES6 和 node.js 语言原理，再往后面业务逻辑熟练之后就开始玩架构、玩性能。然而不论怎样终端的开发，最终都是对系统资源的使用，所以，了解操作系统原理才是最关键的，这样玩什么都很 High。</p>
+</li>
+<li><p>与 React Native 的区别<br>React 和 React Native 仍是有差别的。 React Native 存在 index.ios.js 这样的入口文件，作为应用的程序入口，进行 App 逻辑处理、UI 渲染等。而 React Web 应用则是还包含 HTML 模版的相关目录。<br>而在 React Native 中还有 StyleSheet 模块，这样就可以让 Native 用类似 CSS 的语法来渲染原生应用的样式。而在 React 的 Web 项目中样式使用的是标准 CSS 。<br>所以，<strong>本来设想的 React Native 中的代码可否直接 Copy Paste 到 Web 的设想经验证失败了。</strong><br>毕竟，由于开发平台差异，还是很难做到一套代码多处复用的。<br>因此，还是要多多完善技能树，应对不同问题，给出不同解决方案。</p>
+</li>
+<li><p>跨平台的尝试<br>上面说，一套代码直接跨平台使用失败了。然而，目前已有大厂商提供了自己的跨平台解决方案，一套代码多处运行，比如携程开发了一套新的框架 Moles。<br>可以查看相关资料：<br><a href="http://www.infoq.com/cn/articles/ctrip-moles" target="_blank" rel="external">http://www.infoq.com/cn/articles/ctrip-moles</a><br>GitHub 地址：<br><a href="https://github.com/nygard/class-dump/releases" target="_blank" rel="external">https://github.com/nygard/class-dump/releases</a></p>
+</li>
+</ul>
+
+    
+  </div>
+  
+  <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+  
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">赞赏</span>
+      <div class="donation-body">
+        <div class="tip text-center">感谢支持～ 😘</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/07/29/Objective-C-Runtime-From-Build-To-Did-Launch/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/10/09/react-native-basic-syntax/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'N.Y.';
+    
+    var disqus_url = 'http://yoursite.com/2016/09/29/Learning-React-From-Today-D1/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//N.Y..disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>
